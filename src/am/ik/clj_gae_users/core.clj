@@ -4,9 +4,9 @@
 
 (def 
  #^{:arglists '([])
-    :doc "get UserService. This method returns singleton instance of the service."} 
+    :doc "get UserService. This method returns singleton instance of the service per thread."} 
  #^UserService
- get-user-service (global-singleton #(UserServiceFactory/getUserService)))
+ get-user-service (per-thread-singleton #(UserServiceFactory/getUserService)))
 
 (defn #^User get-current-user 
   "If the user is logged in, returns com.google.appengine.api.users.User object."
