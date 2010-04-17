@@ -18,7 +18,7 @@
   (let [user (get-current-user)]
     (if user
       {:auth-domain (.getAuthDomain user), :email (.getEmail user),
-       :nickname (.getNickname user), :userId (.getUserId user)})))
+       :nickname (.getNickname user), :user-id (.getUserId user)})))
 
 (defn #^FederatedLoginUser get-current-federated-user
   "If the user is logged in, returns com.google.appengine.api.users.FederatedLoginUser object."
