@@ -13,6 +13,14 @@
   []
   (.getCurrentUser (get-user-service)))
 
+(defn #^String get-nickname
+  ([#^User user default-name]
+     (if user (.getNickname user) default-name))
+  ([#^User user]
+     (get-nickname user "unknow user"))
+  ([]
+     (get-nickname (get-current-user))))
+
 (defn get-current-user-map
   []
   (let [user (get-current-user)]
