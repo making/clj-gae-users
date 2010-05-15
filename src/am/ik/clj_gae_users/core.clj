@@ -1,6 +1,6 @@
 (ns am.ik.clj-gae-users.core
   (:use [clojure.contrib.singleton])
-  (:import [com.google.appengine.api.users User UserService UserServiceFactory FederatedLoginUser]))
+  (:import [com.google.appengine.api.users User UserService UserServiceFactory]))
 
 (def 
  #^{:arglists '([])
@@ -28,11 +28,6 @@
       {:auth-domain (.getAuthDomain user), :email (.getEmail user),
        :nickname (.getNickname user), :user-id (.getUserId user)})))
 
-(defn #^FederatedLoginUser get-current-federated-user
-  "If the user is logged in, returns com.google.appengine.api.users.FederatedLoginUser object."
-  []
-  (.getCurrentFederatedUser (get-user-service)))
-
 (defn #^String create-login-url 
   "Returns String of login URL page to the user."
   ([dest-url]
@@ -46,14 +41,6 @@
      (.createLogoutURL (get-user-service) dest-url))
   ([dest-url auth-domain]
      (.createLogoutURL (get-user-service) dest-url auth-domain)))
-
-;; (defn #^String create-federated-login-url 
-;;   [federated-identity dest-url authority attributes-request]
-;;   (.createFederatedLoginURL (get-user-service) federated-identity dest-url authority attributes-request))
-
-;; (defn #^String create-federated-logout-url 
-;;   [dest-url]
-;;   (.createFederatedLogoutURL (get-user-service) dest-url))
 
 (defn user-admin? []
   "Retuns true if a user is admin, otherwise false."
