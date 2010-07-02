@@ -1,4 +1,4 @@
-(defproject am.ik/clj-gae-users "0.1.0"
+(defproject am.ik/clj-gae-users "0.1.1"
   :description "a UserService library on Google App Engine for Clojure"
   :repositories {"maven.seasar.org" "http://maven.seasar.org/maven2",}
   :dependencies [[org.clojure/clojure "1.1.0"]
